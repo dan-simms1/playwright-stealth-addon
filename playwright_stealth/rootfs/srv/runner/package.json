@@ -1,0 +1,11 @@
+{
+  "name": "patchright-flow-runner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generic HTTP wrapper around Patchright that runs structured action lists. Bundled inside the Patchright Stealth Browser HA add-on.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.21.0",
+    "patchright": "^1.52.0"
+  }
+}

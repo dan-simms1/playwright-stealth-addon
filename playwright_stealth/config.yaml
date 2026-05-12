@@ -1,0 +1,34 @@
+name: Patchright Stealth Browser
+version: "1.0.0"
+slug: playwright_stealth
+description: >-
+  Patchright (Playwright fork with a patched Chromium binary)
+  packaged as a Home Assistant add-on, exposing a generic HTTP flow
+  runner for callers that drive structured action lists. Patchright
+  removes Chromium's automation tells at the C++ source level, so no
+  JS-layer masking lies are needed. Optional Xvfb + noVNC viewer for
+  live browser observation.
+url: "https://github.com/dan-simms1/playwright-stealth-addon"
+arch:
+  - aarch64
+  - amd64
+startup: services
+boot: auto
+init: false
+host_network: false
+ports:
+  3001/tcp: 3001
+  7901/tcp: 7901
+ports_description:
+  3001/tcp: Flow runner HTTP service (no authentication; LAN use only)
+  7901/tcp: noVNC viewer (only active when vnc_enabled=true)
+options:
+  runner_port: 3001
+  log_level: info
+  vnc_enabled: false
+  vnc_password: ""
+schema:
+  runner_port: port
+  log_level: list(silent|error|warn|info|debug|trace)
+  vnc_enabled: bool
+  vnc_password: str?
